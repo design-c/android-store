@@ -28,12 +28,12 @@ kotlin {
 
 dependencies {
     implementation(platform(libs.compose.bom))
-
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.material)
     implementation(libs.slf4j.android)
-
     implementation(libs.bundles.coil)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)

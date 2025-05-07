@@ -33,14 +33,15 @@ dependencies {
     implementation(projects.common)
     implementation(projects.featureHome)
     implementation(projects.featureDetails)
-
     implementation(platform(libs.compose.bom))
-
+    implementation(libs.room.runtime)
+    implementation(libs.converter.gson)
+    implementation(libs.room.ktx)
+    implementation(libs.retrofit)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.material)
     implementation(libs.slf4j.android)
-
     implementation(libs.bundles.coil)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)
