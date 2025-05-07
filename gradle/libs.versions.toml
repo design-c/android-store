@@ -1,0 +1,63 @@
+[versions]
+kotlin = "2.0.20"
+android = "8.5.2"
+
+activity = "1.9.3"
+coil = "3.0.0-rc01"
+compose = "2024.10.00"
+coroutines = "1.9.0"
+hilt = "2.51.1"
+hilt-androidx = "1.2.0"
+ktor = "3.0.0"
+lifecycle = "2.8.6"
+material = "1.12.0"
+navigation = "2.8.3"
+serialization = "1.7.3"
+slf4j = "1.7.36"
+
+[libraries]
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-common = { module = "androidx.hilt:hilt-common", version.ref = "hilt-androidx" }
+hilt-compiler-androidx = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt-androidx" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-androidx" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+material3 = { module = "androidx.compose.material3:material3" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4j" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+
+[plugins]
+android = { id = "com.android.application", version.ref = "android" }
+android-library = { id = "com.android.library", version.ref = "android" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+[bundles]
+coil = ["coil-compose", "coil-network-okhttp"]
+compose = [
+    "activity-compose",
+    "lifecycle-viewmodel-compose",
+    "material3",
+    "navigation-compose",
+    "ui-tooling",
+    "ui-tooling-preview"
+]
+hilt = ["hilt-android", "hilt-common", "hilt-compiler-androidx", "hilt-navigation-compose"]
+hilt-compiler = ["hilt-compiler", "hilt-compiler-androidx"]
+ktor = ["ktor-client-content-negotiation", "ktor-client-logging", "ktor-client-okhttp", "ktor-serialization-kotlinx-json"]
