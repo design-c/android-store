@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
                 composable<DetailsScreen> { entry ->
                     val route = entry.toRoute<DetailsScreen>()
                     DetailsScreen(
-                        id = route.id,
                         onBackClick = { navController.popBackStack() },
                     )
                 }

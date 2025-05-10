@@ -4,6 +4,8 @@ import com.csmain.feature.home.data.ProductRepository
 import com.csmain.feature.home.data.ProductRepositoryImpl
 import com.csmain.feature.home.network.ProductApiService
 import com.csmain.feature.home.network.ProductInstance
+import com.csmain.feature_details.data.ProductDetailsRepository
+import com.csmain.feature_details.data.ProductDetailsRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -37,4 +39,7 @@ interface ProductsBindsModule {
 
     @Binds
     fun bindProductRepository(impl: ProductRepositoryImpl): ProductRepository
+
+    @Binds
+    fun bindProductDetails(impl: ProductDetailsRepositoryImpl): ProductDetailsRepository
 }
