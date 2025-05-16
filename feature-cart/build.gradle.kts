@@ -1,11 +1,15 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.serialization)
 }
 
 android {
     namespace = "com.example.feature_cart"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -32,12 +36,26 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(projects.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.material)
+    implementation(libs.slf4j.android)
+    implementation(libs.bundles.coil)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.hilt)
+    implementation(libs.bundles.ktor)
+
+    kapt(libs.bundles.hilt.compiler)
 }

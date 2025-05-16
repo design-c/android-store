@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import com.csmain.feature.home.models.Product
+import com.csmain.common.models.Product
 import com.csmain.feature_details.data.ProductDetailsRepository
 import com.csmain.feature_details.navigation.DetailsScreen
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.csmain.feature.home.navigation.HomeScreen
 import com.csmain.feature.home.presentation.HomeScreen
+import com.csmain.feature_cart.navigation.CartScreen
 import com.csmain.feature_details.navigation.DetailsScreen
 import com.csmain.feature_details.ui.DetailsScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,7 @@ class MainActivity : ComponentActivity() {
                 composable<HomeScreen> {
                     HomeScreen(
                         onProductClick = { id -> navController.navigate(DetailsScreen(id)) },
+//                        onCartClick = { navController.navigate(CartScreen) }
                     )
                 }
                 composable<DetailsScreen> { entry ->
@@ -35,6 +37,9 @@ class MainActivity : ComponentActivity() {
                     DetailsScreen(
                         onBackClick = { navController.popBackStack() },
                     )
+                }
+                composable<CartScreen> {
+
                 }
             }
         }

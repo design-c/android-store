@@ -3,7 +3,6 @@ package com.csmain.finalproject.di
 import com.csmain.feature.home.data.ProductRepository
 import com.csmain.feature.home.data.ProductRepositoryImpl
 import com.csmain.feature.home.network.ProductApiService
-import com.csmain.feature.home.network.ProductInstance
 import com.csmain.feature_details.data.ProductDetailsRepository
 import com.csmain.feature_details.data.ProductDetailsRepositoryImpl
 import dagger.Binds
@@ -14,6 +13,8 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -22,8 +23,8 @@ class ProductModule {
 
     @Provides
     @Singleton
-    fun provideProductApiService(): ProductApiService {
-        return ProductInstance.api
+    fun provideProductApiService(retrofit: Retrofit): ProductApiService {
+        return retrofit.create()
     }
 
     @Provides

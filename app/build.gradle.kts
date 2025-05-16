@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.csmain.finalproject"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.csmain.finalproject"
@@ -36,6 +36,7 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.room.runtime)
     implementation(libs.converter.gson)
+    implementation(projects.featureCart)
     implementation(libs.room.ktx)
     implementation(libs.retrofit)
     implementation(libs.kotlinx.coroutines.android)

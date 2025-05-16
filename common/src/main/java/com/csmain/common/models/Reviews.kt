@@ -1,4 +1,4 @@
-package com.csmain.feature.home.models
+package com.csmain.common.models
 
 data class Reviews(
     val rating: Number,

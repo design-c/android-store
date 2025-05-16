@@ -3,7 +3,7 @@ package com.csmain.feature.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.csmain.feature.home.data.ProductRepository
-import com.csmain.feature.home.models.Products
+import com.csmain.common.models.Products
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
