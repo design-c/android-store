@@ -13,25 +13,35 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.csmain.common.models.Product
+import com.csmain.common.ui.theme.FinalProjectTheme
 import com.csmain.feature.home.viewmodel.ProductViewModel
 
 @Composable
 fun HomeScreen(
     onProductClick: (id: String) -> Unit,
-    viewModel: ProductViewModel = hiltViewModel()
+    viewModel: ProductViewModel = hiltViewModel(),
+    onCartClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -48,31 +58,45 @@ fun HomeScreen(
         is ProductViewModel.State.Content -> {
             Content(
                 products = state.list.products,
-                onProductClick = onProductClick
+                onProductClick = onProductClick,
+                onCartClick = onCartClick,
             )
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Content(
     products: List<Product>,
-    onProductClick: (id: String) -> Unit
+    onProductClick: (id: String) -> Unit,
+    onCartClick: () -> Unit,
 ) {
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        items(products, key = { it.id }) {
-            ProductItem(
-                product = it,
-                onClick = { onProductClick(it.id) }
+    Scaffold (
+        topBar = {
+            TopAppBar(
+                title = {Text("Troe V Popke Shop")},
+                actions = { IconButton(onClick = onCartClick) { Icon(Icons.Default.ShoppingCart, null) } }
             )
         }
+    ){ padding ->
+        LazyColumn(
+            contentPadding = padding,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(products, key = { it.id }) {
+                ProductItem(
+                    product = it,
+                    onClick = { onProductClick(it.id) }
+                )
+            }
+        }
     }
+
 }
 
 @Composable
@@ -121,3 +145,33 @@ fun ProductItem(
         }
     }
 }
+
+//@Preview
+//@Composable
+//private fun HomePreview() {
+//    FinalProjectTheme {
+//        Content(listOf(Product(
+//            id = "a", title = "asdf",
+//            description = "woooow",
+//            category = "woooow",
+//            price = 345.0f,
+//            discountPercentage = 345.0f,
+//            rating = 345.0f,
+//            stock = 345.0f,
+//            tags = emptyList(),
+//            brand = "woooow",
+//            sku = "woooow",
+//            weight = "woooow",
+//            dimensions = (),
+//            warrantyInformation = "woooow",
+//            shippingInformation = "woooow",
+//            availabilityStatus = "woooow",
+//            reviews = 345.0f,
+//            returnPolicy = "woooow",
+//            minimumOrderQuantity = 345.0f,
+//            meta = 345.0f,
+//            images = 345.0f,
+//            thumbnail = "woooow",
+//        ))) { }
+//    }
+//}
