@@ -37,7 +37,6 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.converter.gson)
     implementation(projects.featureCart)
-    implementation(projects.featureProfile)
     implementation(libs.room.ktx)
     implementation(libs.retrofit)
     implementation(libs.kotlinx.coroutines.android)
@@ -48,7 +47,7 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.ktor)
-    implementation(libs.logging.interceptor)
+
     kapt(libs.bundles.hilt.compiler)
 }
 

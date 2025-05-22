@@ -11,7 +11,17 @@ class CartViewModel @Inject constructor(
     private val repository: CartRepository
 ) : ViewModel() {
 
+    sealed interface State {
+        data class Content(val list: List<Product>) : State
+    }
+
+    val state = repository.getProducts()
+
     public fun addProduct(product: Product) {
         repository.addProduct(product)
+    }
+
+    public fun removePreoduct(id: String) {
+        repository.removeProduct(id)
     }
 }

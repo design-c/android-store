@@ -47,39 +47,19 @@ fun HomeScreen(
 
     when (val state = state) {
         ProductViewModel.State.Loading -> {
-            LoadingAnimation()
+            Box(
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Loading..."
+                )
+            }
         }
         is ProductViewModel.State.Content -> {
             Content(
                 products = state.list.products,
                 onProductClick = onProductClick,
                 onCartClick = onCartClick,
-            )
-        }
-    }
-}
-
-@Composable
-fun LoadingAnimation() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            androidx.compose.material3.CircularProgressIndicator(
-                color = Color(0xFF6200EE),
-                strokeWidth = 4.dp
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Загрузка...",
-                fontSize = 16.sp,
-                color = Color.Gray,
             )
         }
     }
