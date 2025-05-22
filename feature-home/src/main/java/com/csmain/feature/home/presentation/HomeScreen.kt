@@ -17,13 +17,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -35,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.csmain.common.models.Product
+import com.csmain.common.ui.CommonHeader
 import com.csmain.feature.home.viewmodel.ProductViewModel
 
 @Composable
@@ -89,7 +88,6 @@ fun LoadingAnimation() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Content(
     products: List<Product>,
@@ -100,8 +98,7 @@ fun Content(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Troe V Popke Shop") },
+            CommonHeader(
                 actions = {
                     IconButton(onClick = onProfileClick) { Icon(Icons.Default.AccountCircle, null) }
                     IconButton(onClick = onCartClick) { Icon(Icons.Default.ShoppingCart, null) }
