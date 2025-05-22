@@ -41,6 +41,8 @@ class ProductViewModel @Inject constructor(
         }
         .stateIn(viewModelScope, SharingStarted.Lazily, State.Loading)
 
+    val stateCart = cartRepository.getFlow()
+
     init {
         fetchProducts()
     }

@@ -1,9 +1,11 @@
 package com.csmain.feature_cart.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +22,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -42,7 +46,8 @@ fun CartScreen(
         LazyColumn(
             contentPadding = padding,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
+                .background(Color.Black)
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -50,6 +55,7 @@ fun CartScreen(
                 item {
                     Text(
                         text = "В корзине пока ничего нет",
+                        color = Color.White,
                         fontSize = 18.sp
                     )
                 }
@@ -95,7 +101,8 @@ fun CartItem(
             Spacer(Modifier.height(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = { onRemoveProduct(product.product) }) {
                     Icon(

@@ -52,6 +52,7 @@ import com.csmain.common.ui.LoadingAnimation
 import com.csmain.common.ui.theme.PurpleGrey80
 import com.csmain.common.ui.theme.White80
 import com.csmain.feature.home.viewmodel.ProductViewModel
+import com.csmain.feature_cart.data.CartProduct
 
 @Composable
 fun HomeScreen(
@@ -61,6 +62,8 @@ fun HomeScreen(
     onProfileClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
+
+    val stateCart by viewModel.stateCart.collectAsState()
 
     when (val state = state) {
         ProductViewModel.State.Loading -> {
@@ -74,7 +77,8 @@ fun HomeScreen(
                 onCartClick = onCartClick,
                 onProfileClick = onProfileClick,
                 onAddProduct = { viewModel.addToCart(it) },
-                onSearchQueryChanged = { viewModel.updateSearchQuery(it) }
+                onSearchQueryChanged = { viewModel.updateSearchQuery(it) },
+                stateCart = stateCart
             )
         }
     }
@@ -88,6 +92,7 @@ fun Content(
     onCartClick: () -> Unit,
     onProfileClick: () -> Unit,
     onAddProduct: (product: Product) -> Unit,
+    stateCart: List<CartProduct>,
     onSearchQueryChanged: (String) -> Unit,
 ) {
     var isSearchVisible by remember { mutableStateOf(false) }
@@ -144,11 +149,12 @@ fun Content(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier.fillMaxSize()
             ) {
-                items(products, key = { it.id }) { product ->
+                items(products, key = { it.id }) {
                     ProductItem(
-                        product = product,
-                        onClick = { onProductClick(product.id) },
-                        onAddProduct = { onAddProduct(product) }
+                        product = it,
+                        onClick = { onProductClick(it.id) },
+                        count = stateCart.find { p -> p.product.id === it.id }?.count ?: 0,
+                        onAddProduct = { onAddProduct(it) }
                     )
                 }
             }
@@ -215,6 +221,7 @@ fun SearchBar(
 @Composable
 fun ProductItem(
     product: Product,
+    count: Int,
     onClick: () -> Unit,
     onAddProduct: (product: Product) -> Unit
 ) {
@@ -224,22 +231,32 @@ fun ProductItem(
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.Center
         ) {
+            AsyncImage(
+                modifier = Modifier.height(120.dp),
+                model = product.images[0],
+                contentDescription = null
+            )
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                AsyncImage(
-                    modifier = Modifier.height(120.dp),
-                    model = product.images[0],
-                    contentDescription = null
-                )
-                IconButton(onClick = { onAddProduct(product) }) {
-                    Icon(
-                        Icons.Default.Add,
-                        null
+                horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = count.toString(),
+                        fontSize = 18.sp
                     )
+                    IconButton(onClick = { onAddProduct(product) }) {
+                        Icon(
+                            Icons.Default.Add,
+                            null
+                        )
+                    }
                 }
             }
             Spacer(Modifier.height(16.dp))
