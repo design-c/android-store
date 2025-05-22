@@ -1,4 +1,6 @@
 package com.example.feature_profile.navigation
 
-object ProfileScreen {
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object ProfileScreen

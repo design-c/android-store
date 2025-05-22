@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.compose)
     alias(libs.plugins.kotlin)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.serialization)
 }
 
 android {
@@ -33,11 +37,17 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
+    implementation(libs.bundles.hilt)
+    implementation(projects.common)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.retrofit)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.slf4j.android)
+    implementation(libs.converter.gson)
+    implementation(libs.bundles.coil)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.ktor)
+    kapt(libs.hilt.compiler)
 }

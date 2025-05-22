@@ -29,7 +29,7 @@ class ProductRepositoryImpl @Inject constructor(
 
             result
                 .onSuccess { list -> products.emit(list) }
-                .onFailure { Log.e("TAG", "ERROR", it) }
+                .onFailure { Log.e("TAG", "ERROR ${it.message}", it) }
         }
     }
 }
