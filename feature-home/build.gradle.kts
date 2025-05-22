@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.ktor)
+    implementation(project(":feature-cart"))
     kapt(libs.bundles.hilt.compiler)
 }
 

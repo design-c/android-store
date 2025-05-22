@@ -2,8 +2,10 @@ package com.csmain.feature.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.csmain.common.models.Product
 import com.csmain.feature.home.data.ProductRepository
 import com.csmain.common.models.Products
+import com.csmain.feature_cart.data.CartRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
@@ -13,6 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductViewModel @Inject constructor(
     private val repository: ProductRepository,
+    private val cartRepository: CartRepository
 ) : ViewModel() {
 
     sealed interface State {
@@ -26,6 +29,10 @@ class ProductViewModel @Inject constructor(
 
     init {
         fetchProducts()
+    }
+
+    fun addToCart(product: Product) {
+        cartRepository.addProduct(product)
     }
 
     private fun fetchProducts() {
