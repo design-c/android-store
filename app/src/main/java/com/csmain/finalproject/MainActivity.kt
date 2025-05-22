@@ -30,7 +30,8 @@ class MainActivity : ComponentActivity() {
                 composable<HomeScreen> {
                     HomeScreen(
                         onProductClick = { id -> navController.navigate(DetailsScreen(id)) },
-                        onCartClick = { navController.navigate(CartScreen) }
+                        onCartClick = { navController.navigate(CartScreen) },
+                        onProfileClick = { navController.navigate(ProfileScreen) },
                     )
                 }
                 composable<DetailsScreen> { entry ->
