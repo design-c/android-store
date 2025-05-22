@@ -14,6 +14,7 @@ import com.csmain.feature_cart.navigation.CartScreen
 import com.csmain.feature_details.navigation.DetailsScreen
 import com.csmain.feature_details.ui.DetailsScreen
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.feature_profile.navigation.ProfileScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -39,6 +40,9 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 composable<CartScreen> {
+
+                }
+                composable<ProfileScreen> {
 
                 }
             }
