@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -41,7 +42,8 @@ import com.csmain.feature.home.viewmodel.ProductViewModel
 fun HomeScreen(
     onProductClick: (id: String) -> Unit,
     viewModel: ProductViewModel = hiltViewModel(),
-    onCartClick: () -> Unit
+    onCartClick: () -> Unit,
+    onProfileClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -54,6 +56,7 @@ fun HomeScreen(
                 products = state.list.products,
                 onProductClick = onProductClick,
                 onCartClick = onCartClick,
+                onProfileClick = onProfileClick,
             )
         }
     }
@@ -91,12 +94,16 @@ fun Content(
     products: List<Product>,
     onProductClick: (id: String) -> Unit,
     onCartClick: () -> Unit,
+    onProfileClick: () -> Unit,
 ) {
     Scaffold (
         topBar = {
             TopAppBar(
                 title = {Text("Troe V Popke Shop")},
-                actions = { IconButton(onClick = onCartClick) { Icon(Icons.Default.ShoppingCart, null) } }
+                actions = {
+                    IconButton(onClick = onProfileClick) { Icon(Icons.Default.AccountCircle, null) }
+                    IconButton(onClick = onCartClick) { Icon(Icons.Default.ShoppingCart, null) }
+                }
             )
         }
     ){ padding ->
