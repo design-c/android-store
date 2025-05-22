@@ -27,6 +27,8 @@ class ProductViewModel @Inject constructor(
         .map { State.Content(it) }
         .stateIn(viewModelScope, SharingStarted.Lazily, State.Loading)
 
+    val stateCart = cartRepository.getFlow()
+
     init {
         fetchProducts()
     }

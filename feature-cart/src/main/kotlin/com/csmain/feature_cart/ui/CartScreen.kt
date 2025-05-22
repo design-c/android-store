@@ -20,25 +20,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.csmain.common.models.Product
-import com.csmain.common.ui.CommonHeader
 import com.csmain.feature_cart.data.CartProduct
 
 @Composable
 fun CartScreen(
     viewModel: CartViewModel = hiltViewModel(),
-    onBackClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
 
-    Scaffold(
-        topBar = { CommonHeader(onBackClick = onBackClick) }
-    ) { padding ->
+    Scaffold() { padding ->
         LazyColumn(
             contentPadding = padding,
             modifier = Modifier
@@ -95,7 +92,8 @@ fun CartItem(
             Spacer(Modifier.height(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = { onRemoveProduct(product.product) }) {
                     Icon(
