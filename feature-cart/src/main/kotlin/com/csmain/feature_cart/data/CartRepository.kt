@@ -11,10 +11,10 @@ class CartRepository @Inject constructor() {
 
     private val cartState = MutableStateFlow<List<Product>>(emptyList())
 
-    public fun getProducts(): List<Product> {
-        return cartState.value
+    public fun addCart(cart: List<Product>) {
+        cartState.tryEmit(cart)
     }
-
+    
     public fun addProduct(product: Product) {
         cartState.update { it + product }
     }

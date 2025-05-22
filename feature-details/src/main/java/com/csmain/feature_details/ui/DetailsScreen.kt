@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.csmain.common.models.Product
+import com.csmain.common.ui.LoadingAnimation
 
 @Composable
 fun DetailsScreen(
@@ -31,13 +32,7 @@ fun DetailsScreen(
 
     when (val state = state) {
         DetailsViewModel.State.Loading -> {
-            Box(
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Loading..."
-                )
-            }
+            LoadingAnimation()
         }
 
         is DetailsViewModel.State.Content -> {

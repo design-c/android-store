@@ -29,11 +29,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.csmain.common.models.Product
+import com.csmain.common.ui.LoadingAnimation
+import com.csmain.common.ui.theme.FinalProjectTheme
 import com.csmain.feature.home.viewmodel.ProductViewModel
 
 @Composable
@@ -60,31 +63,6 @@ fun HomeScreen(
     }
 }
 
-@Composable
-fun LoadingAnimation() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            androidx.compose.material3.CircularProgressIndicator(
-                color = Color(0xFF6200EE),
-                strokeWidth = 4.dp
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Загрузка...",
-                fontSize = 16.sp,
-                color = Color.Gray,
-            )
-        }
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
