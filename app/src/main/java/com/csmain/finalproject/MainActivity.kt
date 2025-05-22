@@ -15,7 +15,6 @@ import com.csmain.feature_details.navigation.DetailsScreen
 import com.csmain.feature_details.ui.DetailsScreen
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.feature_profile.navigation.ProfileScreen
-import com.example.feature_profile.ui.ProfileScreen
 import com.csmain.feature_cart.ui.CartScreen
 
 @AndroidEntryPoint
@@ -43,10 +42,10 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 composable<CartScreen> {
-                    CartScreen(onBackClick = { navController.popBackStack() })
+                    CartScreen(onBackClick = { navController.popBackStack()})
                 }
                 composable<ProfileScreen> {
-                    ProfileScreen(onBackClick = { navController.popBackStack() })
+
                 }
             }
         }

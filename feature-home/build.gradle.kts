@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.ktor)
     implementation(project(":feature-cart"))
+    implementation(libs.androidx.material3)
     kapt(libs.bundles.hilt.compiler)
 }
 
