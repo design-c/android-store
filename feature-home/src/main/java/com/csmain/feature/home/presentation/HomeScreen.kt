@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,21 +28,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.csmain.common.models.Product
-import com.csmain.common.ui.theme.FinalProjectTheme
 import com.csmain.feature.home.viewmodel.ProductViewModel
 
 @Composable
 fun HomeScreen(
     onProductClick: (id: String) -> Unit,
     viewModel: ProductViewModel = hiltViewModel(),
-    onCartClick: () -> Unit,
-    onProfileClick: () -> Unit,
+    onCartClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -56,7 +52,6 @@ fun HomeScreen(
                 products = state.list.products,
                 onProductClick = onProductClick,
                 onCartClick = onCartClick,
-                onProfileClick = onProfileClick,
             )
         }
     }
@@ -94,16 +89,12 @@ fun Content(
     products: List<Product>,
     onProductClick: (id: String) -> Unit,
     onCartClick: () -> Unit,
-    onProfileClick: () -> Unit,
 ) {
     Scaffold (
         topBar = {
             TopAppBar(
                 title = {Text("Troe V Popke Shop")},
-                actions = {
-                    IconButton(onClick = onProfileClick) { Icon(Icons.Default.AccountCircle, null) }
-                    IconButton(onClick = onCartClick) { Icon(Icons.Default.ShoppingCart, null) }
-                }
+                actions = { IconButton(onClick = onCartClick) { Icon(Icons.Default.ShoppingCart, null) } }
             )
         }
     ){ padding ->
