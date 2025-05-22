@@ -43,10 +43,10 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 composable<CartScreen> {
-                    CartScreen(onBackClick = { navController.popBackStack()})
+                    CartScreen(onBackClick = { navController.popBackStack() })
                 }
                 composable<ProfileScreen> {
-                    ProfileScreen()
+                    ProfileScreen(onBackClick = { navController.popBackStack() })
                 }
             }
         }
