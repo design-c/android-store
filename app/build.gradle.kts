@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.ktor)
     implementation(libs.logging.interceptor)
+    implementation(project(":feature-about"))
     kapt(libs.bundles.hilt.compiler)
 }
 

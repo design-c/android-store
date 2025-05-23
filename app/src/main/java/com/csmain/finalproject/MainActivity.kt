@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.example.feature_about.navigation.AboutScreen
+import com.example.feature_about.ui.AboutScreen
 import com.csmain.feature.home.navigation.HomeScreen
 import com.csmain.feature.home.presentation.HomeScreen
 import com.csmain.feature_cart.navigation.CartScreen
@@ -34,12 +36,14 @@ class MainActivity : ComponentActivity() {
                         onProductClick = { id -> navController.navigate(DetailsScreen(id)) },
                         onCartClick = { navController.navigate(CartScreen) },
                         onProfileClick = { navController.navigate(ProfileScreen) },
+                        onAboutClick = { navController.navigate(AboutScreen)}
                     )
                 }
                 composable<DetailsScreen> { entry ->
                     val route = entry.toRoute<DetailsScreen>()
                     DetailsScreen(
                         onBackClick = { navController.popBackStack() },
+                        onAboutClick = { navController.navigate(AboutScreen) }
                     )
                 }
                 composable<CartScreen> {
@@ -47,6 +51,9 @@ class MainActivity : ComponentActivity() {
                 }
                 composable<ProfileScreen> {
                     ProfileScreen(onBackClick = { navController.popBackStack() })
+                }
+                composable<AboutScreen> {
+                    AboutScreen(onBackClick = { navController.popBackStack() })
                 }
             }
         }
