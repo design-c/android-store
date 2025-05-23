@@ -1,4 +1,4 @@
-package com.example.feature_about
+package com.example.feature_orders
 
 import org.junit.Test
 

@@ -60,7 +60,6 @@ fun HomeScreen(
     viewModel: ProductViewModel = hiltViewModel(),
     onCartClick: () -> Unit,
     onProfileClick: () -> Unit,
-    onAboutClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -79,8 +78,7 @@ fun HomeScreen(
                 onProfileClick = onProfileClick,
                 onAddProduct = { viewModel.addToCart(it) },
                 onSearchQueryChanged = { viewModel.updateSearchQuery(it) },
-                stateCart = stateCart,
-                onAboutClick = onAboutClick,
+                stateCart = stateCart
             )
         }
     }
@@ -93,7 +91,6 @@ fun Content(
     onProductClick: (id: String) -> Unit,
     onCartClick: () -> Unit,
     onProfileClick: () -> Unit,
-    onAboutClick: () -> Unit,
     onAddProduct: (product: Product) -> Unit,
     stateCart: List<CartProduct>,
     onSearchQueryChanged: (String) -> Unit,
@@ -124,8 +121,7 @@ fun Content(
                     IconButton(onClick = { isSearchVisible = !isSearchVisible }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
                     }
-                },
-                onTitleClick = onAboutClick
+                }
             )
 
             AnimatedVisibility(

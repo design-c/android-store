@@ -49,9 +49,8 @@ dependencies {
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.ktor)
     implementation(libs.logging.interceptor)
-    implementation(project(":feature-about"))
+    implementation(project(":feature-orders"))
     kapt(libs.bundles.hilt.compiler)
-    implementation(libs.androidx.datastore.preferences)
 }
 
 configurations {
