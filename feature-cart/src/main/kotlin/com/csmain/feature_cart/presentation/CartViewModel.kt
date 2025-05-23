@@ -1,4 +1,4 @@
-package com.csmain.feature_cart.ui
+package com.csmain.feature_cart.presentation
 
 import androidx.lifecycle.ViewModel
 import com.csmain.common.models.Product

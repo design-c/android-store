@@ -1,4 +1,4 @@
-package com.example.feature_profile.ui
+package com.example.feature_profile.presentation
 
 import android.content.Context
 import androidx.compose.foundation.background

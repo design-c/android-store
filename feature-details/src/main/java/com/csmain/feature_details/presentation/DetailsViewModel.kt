@@ -1,4 +1,4 @@
-package com.csmain.feature_details.ui
+package com.csmain.feature_details.presentation
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

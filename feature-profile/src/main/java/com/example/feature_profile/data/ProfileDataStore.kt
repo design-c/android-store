@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.map
 val Context.dataStore by preferencesDataStore("user_profile")
 
 object ProfileDataStore {
-    val NAME_KEY = stringPreferencesKey("name")
-    val EMAIL_KEY = stringPreferencesKey("email")
-    val PHONE_KEY = stringPreferencesKey("phone")
-    val ADDRESS_KEY = stringPreferencesKey("address")
+    private val NAME_KEY = stringPreferencesKey("name")
+    private val EMAIL_KEY = stringPreferencesKey("email")
+    private val PHONE_KEY = stringPreferencesKey("phone")
+    private val ADDRESS_KEY = stringPreferencesKey("address")
 
     suspend fun saveProfile(context: Context, name: String, email: String, phone: String, address: String) {
         context.dataStore.edit { preferences ->

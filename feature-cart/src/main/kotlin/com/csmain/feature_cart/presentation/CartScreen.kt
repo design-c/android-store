@@ -1,4 +1,4 @@
-package com.csmain.feature_cart.ui
+package com.csmain.feature_cart.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

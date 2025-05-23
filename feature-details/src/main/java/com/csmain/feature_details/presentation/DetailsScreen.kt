@@ -1,4 +1,4 @@
-package com.csmain.feature_details.ui
+package com.csmain.feature_details.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -10,17 +10,17 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.feature_about.navigation.AboutScreen
-import com.example.feature_about.ui.AboutScreen
+import com.example.feature_about.presentation.AboutScreen
 import com.csmain.feature.home.navigation.HomeScreen
 import com.csmain.feature.home.presentation.HomeScreen
 import com.csmain.feature_cart.navigation.CartScreen
 import com.csmain.feature_details.navigation.DetailsScreen
-import com.csmain.feature_details.ui.DetailsScreen
+import com.csmain.feature_details.presentation.DetailsScreen
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.feature_profile.navigation.ProfileScreen
-import com.example.feature_profile.ui.ProfileScreen
+import com.example.feature_profile.presentation.ProfileScreen
 import com.csmain.feature.orders.navigation.OrdersScreen
-import com.csmain.feature_cart.ui.CartScreen
+import com.csmain.feature_cart.presentation.CartScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
