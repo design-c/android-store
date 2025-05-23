@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -50,7 +51,11 @@ class MainActivity : ComponentActivity() {
                     CartScreen(onBackClick = { navController.popBackStack() })
                 }
                 composable<ProfileScreen> {
-                    ProfileScreen(onBackClick = { navController.popBackStack() })
+                    val context = LocalContext.current
+                    ProfileScreen(
+                        onBackClick = { navController.popBackStack() },
+                        context = context,
+                    )
                 }
                 composable<AboutScreen> {
                     AboutScreen(onBackClick = { navController.popBackStack() })

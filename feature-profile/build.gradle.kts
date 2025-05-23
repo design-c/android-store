@@ -50,4 +50,5 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.ktor)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.datastore.preferences)
 }

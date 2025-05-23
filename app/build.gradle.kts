@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(project(":feature-about"))
     kapt(libs.bundles.hilt.compiler)
+    implementation(libs.androidx.datastore.preferences)
 }
 
 configurations {
