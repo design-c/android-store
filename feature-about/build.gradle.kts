@@ -8,8 +8,8 @@ plugins {
 }
 
 android {
-    namespace = "com.example.feature_profile"
-    compileSdk = 35
+    namespace = "com.example.feature_about"
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -50,5 +50,4 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.ktor)
     kapt(libs.hilt.compiler)
-    implementation(libs.androidx.datastore.preferences)
 }

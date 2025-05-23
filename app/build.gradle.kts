@@ -50,7 +50,9 @@ dependencies {
     implementation(libs.bundles.ktor)
     implementation(libs.logging.interceptor)
     implementation(project(":feature-orders"))
+    implementation(project(":feature-about"))
     kapt(libs.bundles.hilt.compiler)
+    implementation(libs.androidx.datastore.preferences)
 }
 
 configurations {

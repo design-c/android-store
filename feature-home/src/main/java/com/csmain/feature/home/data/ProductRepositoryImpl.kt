@@ -1,20 +1,12 @@
 package com.csmain.feature.home.data
 
 import android.util.Log
-import com.csmain.common.models.Products
-import com.csmain.feature.home.network.ProductApiService
+import com.csmain.feature.home.domain.Products
+import com.csmain.feature.home.domain.ProductRepository
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-interface ProductRepository {
-
-    val products: Flow<Products>
-
-    fun requestProducts()
-}
 
 class ProductRepositoryImpl @Inject constructor(
     private val coroutineScope: CoroutineScope,

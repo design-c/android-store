@@ -1,7 +1,7 @@
-package com.csmain.feature.home.network
+package com.csmain.feature.home.data
 
 import com.csmain.common.models.Product
-import com.csmain.common.models.Products
+import com.csmain.feature.home.domain.Products
 import retrofit2.http.GET
 import retrofit2.http.Path
 

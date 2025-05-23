@@ -1,16 +1,15 @@
-package com.csmain.feature.home.viewmodel
+package com.csmain.feature.home.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.csmain.common.models.Product
-import com.csmain.feature.home.data.ProductRepository
-import com.csmain.common.models.Products
+import com.csmain.feature.home.domain.ProductRepository
+import com.csmain.feature.home.domain.Products
 import com.csmain.feature_cart.data.CartRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 

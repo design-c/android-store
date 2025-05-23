@@ -2,7 +2,7 @@ package com.csmain.feature_details.data
 
 import android.util.Log
 import com.csmain.common.models.Product
-import com.csmain.feature.home.network.ProductApiService
+import com.csmain.feature.home.data.ProductApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow

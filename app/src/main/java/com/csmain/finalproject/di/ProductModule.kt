@@ -1,8 +1,8 @@
 package com.csmain.finalproject.di
 
-import com.csmain.feature.home.data.ProductRepository
+import com.csmain.feature.home.domain.ProductRepository
 import com.csmain.feature.home.data.ProductRepositoryImpl
-import com.csmain.feature.home.network.ProductApiService
+import com.csmain.feature.home.data.ProductApiService
 import com.csmain.feature_details.data.ProductDetailsRepository
 import com.csmain.feature_details.data.ProductDetailsRepositoryImpl
 import dagger.Binds

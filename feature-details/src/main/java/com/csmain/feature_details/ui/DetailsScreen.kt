@@ -27,6 +27,7 @@ import com.csmain.common.ui.LoadingAnimation
 fun DetailsScreen(
     onBackClick: () -> Unit,
     viewModel: DetailsViewModel = hiltViewModel(),
+    onAboutClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -38,7 +39,8 @@ fun DetailsScreen(
         is DetailsViewModel.State.Content -> {
             ProductCard(
                 product = state.product,
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                onAboutClick = onAboutClick,
             )
         }
     }
@@ -48,9 +50,10 @@ fun DetailsScreen(
 fun ProductCard(
     product: Product,
     onBackClick: () -> Unit,
+    onAboutClick: () -> Unit,
     ) {
     Scaffold(
-        topBar = { CommonHeader(onBackClick = onBackClick)  }
+        topBar = { CommonHeader(onBackClick = onBackClick, onTitleClick = onAboutClick)  }
     ) {
         Column(
             modifier = Modifier
