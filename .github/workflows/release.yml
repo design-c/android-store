@@ -7,11 +7,11 @@ on:
     types:
       - closed
 
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     name: Build & Release on Merge to Main
     runs-on: ubuntu-latest
 
@@ -31,6 +31,9 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleRelease
 
+      - name: Show APKs (debug info)
+        run: ls -lR app/build/outputs/apk/
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -38,7 +41,7 @@ jobs:
           path: app/build/outputs/apk/release/app-release.apk
 
       - name: Download artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/download-artifact@v4
         with:
           name: release-apk
 
