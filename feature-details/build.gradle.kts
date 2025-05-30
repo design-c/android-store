@@ -50,9 +50,3 @@ dependencies {
 
     kapt(libs.bundles.hilt.compiler)
 }
-
-configurations {
-    implementation {
-        exclude(group = "org.jetbrains", module = "annotations")
-    }
-}
