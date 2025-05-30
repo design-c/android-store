@@ -54,7 +54,7 @@ fun CartScreen(
             if (state.size == 0) {
                 item {
                     Text(
-                        text = "В корзине пока ничего нет",
+                        text = "Empty",
                         color = Color.White,
                         fontSize = 18.sp
                     )

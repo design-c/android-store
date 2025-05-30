@@ -103,7 +103,7 @@ fun About(
                     Text(
                         text = "Our Mission",
                         style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFFE91E63), // Тематический акцент
+                        color = Color(0xFFE91E63),
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                     Text(

@@ -140,7 +140,6 @@ fun Content(
                 )
             }
 
-            // Список товаров
             LazyColumn(
                 contentPadding = PaddingValues(
                     top = paddingValues.calculateTopPadding(),

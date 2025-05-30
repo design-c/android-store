@@ -11,11 +11,11 @@ class CartRepository @Inject constructor() {
 
     private val cartState = MutableStateFlow<List<CartProduct>>(emptyList())
 
-    public fun getFlow(): MutableStateFlow<List<CartProduct>> {
+    fun getFlow(): MutableStateFlow<List<CartProduct>> {
         return cartState
     }
 
-    public fun addProduct(product: Product, count: Int = 1) {
+    fun addProduct(product: Product, count: Int = 1) {
         cartState.update { oldState ->
             val existingProduct = oldState.find { it.product == product }
 
@@ -33,7 +33,7 @@ class CartRepository @Inject constructor() {
         }
     }
 
-    public fun removeProduct(id: String, count: Int = 1) {
+    fun removeProduct(id: String, count: Int = 1) {
         cartState.update { oldState ->
             oldState.mapNotNull { cartProduct ->
                 if (cartProduct.product.id == id) {

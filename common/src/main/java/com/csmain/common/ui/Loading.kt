@@ -33,7 +33,7 @@ fun LoadingAnimation() {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "Загрузка...",
+                text = "Loading...",
                 fontSize = 16.sp,
                 color = Color.Gray,
             )
