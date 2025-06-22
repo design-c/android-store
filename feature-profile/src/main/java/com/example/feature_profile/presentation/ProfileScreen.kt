@@ -83,6 +83,43 @@ fun Profile(
     var phone by remember { mutableStateOf(user.phone) }
     var address by remember { mutableStateOf(user.address) }
 
+    var nameError by remember { mutableStateOf<String?>(null) }
+    var emailError by remember { mutableStateOf<String?>(null) }
+    var phoneError by remember { mutableStateOf<String?>(null) }
+    var addressError by remember { mutableStateOf<String?>(null) }
+
+    fun validate(): Boolean {
+        var valid = true
+
+        nameError = if (name.isBlank()) {
+            valid = false
+            "Name cannot be empty"
+        } else null
+
+        emailError = if (email.isBlank()) {
+            valid = false
+            "Email cannot be empty"
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            valid = false
+            "Invalid email address"
+        } else null
+
+        phoneError = if (phone.isBlank()) {
+            valid = false
+            "Phone cannot be empty"
+        } else if (!phone.matches(Regex("""^\+?\d{10,15}$"""))) {
+            valid = false
+            "Invalid phone number"
+        } else null
+
+        addressError = if (address.isBlank()) {
+            valid = false
+            "Address cannot be empty"
+        } else null
+
+        return valid
+    }
+
     Scaffold(
         topBar = {
             CommonHeader(title = "Profile", onBackClick = onBackClick)
@@ -137,7 +174,8 @@ fun Profile(
                         onValueChange = { name = it },
                         label = "Name",
                         placeholder = "Enter your name",
-                        enabled = isEditing
+                        enabled = isEditing,
+                        error = nameError
                     )
 
                     CustomTextField(
@@ -145,7 +183,8 @@ fun Profile(
                         onValueChange = { email = it },
                         label = "Email",
                         placeholder = "Enter your email",
-                        enabled = isEditing
+                        enabled = isEditing,
+                        error = emailError
                     )
 
                     CustomTextField(
@@ -153,7 +192,8 @@ fun Profile(
                         onValueChange = { phone = it },
                         label = "Phone",
                         placeholder = "Enter your phone number",
-                        enabled = isEditing
+                        enabled = isEditing,
+                        error = phoneError
                     )
 
                     CustomTextField(
@@ -161,7 +201,8 @@ fun Profile(
                         onValueChange = { address = it },
                         label = "Address",
                         placeholder = "Enter your address",
-                        enabled = isEditing
+                        enabled = isEditing,
+                        error = addressError
                     )
                 }
             }
@@ -177,9 +218,13 @@ fun Profile(
                     Button(
                         onClick = {
                             if (isEditing) {
-                                onSaveProfile(name, email, phone, address)
+                                if (validate()) {
+                                    onSaveProfile(name, email, phone, address)
+                                    isEditing = false
+                                }
+                            } else {
+                                isEditing = true
                             }
-                            isEditing = !isEditing
                         },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = if (isEditing) Color(0xFF4CAF50) else Color(0xFFE91E63),
@@ -197,6 +242,10 @@ fun Profile(
                                 phone = user.phone
                                 address = user.address
                                 isEditing = false
+                                nameError = null
+                                emailError = null
+                                phoneError = null
+                                addressError = null
                             },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.Gray,
@@ -218,7 +267,8 @@ fun CustomTextField(
     onValueChange: (String) -> Unit,
     label: String,
     placeholder: String,
-    enabled: Boolean
+    enabled: Boolean,
+    error: String?
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
@@ -231,7 +281,7 @@ fun CustomTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.DarkGray, RoundedCornerShape(8.dp))
-                .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                .border(1.dp, if (error == null) Color.Gray else Color.Red, RoundedCornerShape(8.dp))
                 .padding(horizontal = 8.dp, vertical = 4.dp)
         ) {
             BasicTextField(
@@ -256,6 +306,14 @@ fun CustomTextField(
                     .fillMaxWidth()
                     .background(Color.Transparent),
                 enabled = enabled
+            )
+        }
+        if (!error.isNullOrEmpty()) {
+            Text(
+                text = error,
+                color = Color.Red,
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(start = 4.dp, top = 2.dp)
             )
         }
     }
